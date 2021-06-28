@@ -56,7 +56,6 @@ class ObjectDataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return data.getAllDimensions + 1
         return data.getAllDimensions
     }
     
@@ -68,17 +67,6 @@ class ObjectDataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
             cell = UITableViewCell(style: .value1, reuseIdentifier: ObjectDataSource.cell) as? ItemCell
         }
         
-//        var textForCell = String()
-//        var toleranceText = String()
-        
-//        if indexPath.row == 0 {
-//            textForCell = "Размеры в мм:"
-//            toleranceText = "mm./μm."
-//        } else {
-//            textForCell = data.getElement(with: indexPath.row - 1)
-//            toleranceText = data.getToleranceValue(with: indexPath.row - 1)
-//        }
-        
         let textForCell = data.getElement(with: indexPath.row)
         let toleranceText = data.getToleranceValue(with: indexPath.row)
         
@@ -89,11 +77,6 @@ class ObjectDataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
-//        if indexPath.row != 0 {
-//            let toleranceValue = data.getValue(with: indexPath.row - 1)
-//            parentVC!.toleranceValueTuple = toleranceValue
-//        }
         
         let toleranceValue = data.getValue(with: indexPath.row)
         parentVC!.toleranceValueTuple = toleranceValue
