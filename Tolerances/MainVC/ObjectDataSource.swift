@@ -14,7 +14,7 @@ class ObjectDataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
     private static let cell = "Cell"
     private let sizeHeader: CGFloat = 40.0
     
-    private var data = DataStore(with: .it12)
+    var data = DataStore(with: .it12)
     
     init(vc: LinerDimensionsViewController) {
         self.parentVC = vc

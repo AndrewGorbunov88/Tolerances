@@ -7,11 +7,20 @@
 
 import UIKit
 
-class LinerDimensionsViewController: UITableViewController, IViewController {
+class LinerDimensionsViewController: UITableViewController, UISearchBarDelegate , IViewController {
+    
+    private var stateToleranceForInitPickerViewController: ChosenTolerance?
+    
+    @IBOutlet weak var linerSearchBar: UISearchBar! {
+        didSet {
+            self.linerSearchBar.setShowsCancelButton(false, animated: false)
+            self.linerSearchBar.barTintColor = AppDelegate.colorScheme.barColor
+        }
+    }
     
     private var dataSourceAndDelegate: ObjectDataSource?
     
-    private var stateToleranceForInitPickerViewController: ChosenTolerance?
+    private var findIn: UserSearchingDimension?
     
     var toleranceValueTuple: (tolerance: Double, symbol: String)? {
         didSet {
@@ -33,6 +42,9 @@ class LinerDimensionsViewController: UITableViewController, IViewController {
         
         tableView.dataSource = dataSourceAndDelegate
         tableView.delegate = dataSourceAndDelegate
+        
+        linerSearchBar.delegate = self
+        self.findIn = dataSourceAndDelegate?.data
         
         createToleranceDidChangeObserver()
         createLeftButton()
@@ -89,6 +101,25 @@ class LinerDimensionsViewController: UITableViewController, IViewController {
         self.navigationItem.leftBarButtonItem = chooseToleranceButton
     }
     
+    //MARK: - UISearchBarDelegate
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(true, animated: true)
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        searchBar.setShowsCancelButton(false, animated: true)
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        self.findIn?.tolerance(in: searchBar.text!)
+        self.tableView.reloadData()
+    }
+        
 }
 
 extension LinerDimensionsViewController: UIViewControllerTransitioningDelegate {
@@ -102,6 +133,10 @@ extension LinerDimensionsViewController: SetTolerance {
         dataSourceAndDelegate!.setToleranceInModel(with: sender)
     }
     
+}
+
+protocol UserSearchingDimension {
+    func tolerance(in size: String)
 }
 
 enum ChosenTolerance: String, CaseIterable {

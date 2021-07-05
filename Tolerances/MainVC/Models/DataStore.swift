@@ -47,6 +47,11 @@ class DataStore {
                                                      (name: "Св. 5000 до 6300 мм", range: nil, tolerance: nil, unit: nil),
                                                      (name: "Св. 6300 до 8000 мм", range: nil, tolerance: nil, unit: nil)]
     
+    private var sortedDimensions: [(name: String,
+                                   range: ClosedRange<Double>?,
+                                   tolerance: Double?,
+                                   unit: UnitLength?)] = []
+    
     private var dictionaryTolerance = [ChosenTolerance: [(range: ClosedRange<Double>, tolerance: Double, unit: UnitLength)]]()
     
     private let it01 = [(range: 0.0...3.0, tolerance: Double(0.3), unit: UnitLength.micrometers),
@@ -571,7 +576,11 @@ class DataStore {
     
     var getAllDimensions: Int {
         get {
-            return dimensions.count
+            if sortedDimensions.isEmpty {
+                return dimensions.count
+            } else {
+                return sortedDimensions.count
+            }
         }
     }
     
@@ -594,20 +603,40 @@ class DataStore {
     }
     
     func getElement(with element: Int) -> String {
-        return dimensions[element].name
+        if sortedDimensions.isEmpty {
+            return dimensions[element].name
+        } else {
+            return sortedDimensions[element].name
+        }
     }
     
     func getToleranceValue(with element: Int) -> String {
-        return String(dimensions[element].tolerance ?? 0.0) + " " + String(dimensions[element].unit?.symbol ?? "unknown")
+        if sortedDimensions.isEmpty {
+            return String(dimensions[element].tolerance ?? 0.0) + " " + String(dimensions[element].unit?.symbol ?? "unknown")
+        } else {
+            return String(sortedDimensions[element].tolerance ?? 0.0) + " " + String(sortedDimensions[element].unit?.symbol ?? "unknown")
+        }
     }
     
     func getValue(with element: Int) -> (tolerance: Double, symbol: String) {
-        let valueElement = dimensions[element].tolerance ?? 0.0
-        let symbol = dimensions[element].unit?.symbol ?? "unknown"
         
-        let toleranceTuple = (tolerance: valueElement, symbol: symbol)
+        if sortedDimensions.isEmpty {
+            let valueElement = dimensions[element].tolerance ?? 0.0
+            let symbol = dimensions[element].unit?.symbol ?? "unknown"
+            
+            let toleranceTuple = (tolerance: valueElement, symbol: symbol)
+            
+            return toleranceTuple
+        } else {
+            let valueElement = sortedDimensions[element].tolerance ?? 0.0
+            let symbol = sortedDimensions[element].unit?.symbol ?? "unknown"
+            
+            let toleranceTuple = (tolerance: valueElement, symbol: symbol)
+            
+            return toleranceTuple
+
+        }
         
-        return toleranceTuple
     }
     
     private func setupDimensions() {
@@ -650,6 +679,31 @@ class DataStore {
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
+    
+}
+
+extension DataStore: UserSearchingDimension {
+    
+    func tolerance(in size: String) {
+        var sizeFromString = size
+        
+        if sizeFromString.last == "." {
+            sizeFromString += "0"
+        }
+        
+        let dimensionValue = Double(sizeFromString)
+        sortedDimensions = []
+        
+        for dimension in dimensions {
+            
+            if sizeFromString.count > 0 && dimension.range?.contains(dimensionValue!) == true {
+                sortedDimensions.append(dimension)
+            }
+            
+        }
+        
+    }
+    
     
 }
 
