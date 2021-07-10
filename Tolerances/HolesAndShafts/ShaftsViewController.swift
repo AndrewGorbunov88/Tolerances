@@ -8,8 +8,16 @@
 import UIKit
 
 class ShaftsViewController: UITableViewController, HolesOrShaftsVC {
-
+    
+    @IBOutlet weak var shaftsSearchBar: UISearchBar! {
+        didSet {
+            self.shaftsSearchBar.setShowsCancelButton(false, animated: false)
+            self.shaftsSearchBar.barTintColor = AppDelegate.colorScheme.barColor
+        }
+    }
+    
     var shaftDataSource: HolesOrShaftsVCDataSource?
+    var searchShaftController: SearchHoleAndShaftController?
 
     var dataHolesModel = DataHolesAndShafts(choseFieldState: ShaftFields.h)
 
@@ -21,6 +29,12 @@ class ShaftsViewController: UITableViewController, HolesOrShaftsVC {
 
         self.tableView.dataSource = shaftDataSource
         self.tableView.delegate = shaftDataSource
+        
+        let searchShaft = SearchHoleAndShaftController(bar: self.shaftsSearchBar,
+                                      find: dataHolesModel,
+                                      tableForRefresh: self.tableView)
+        searchShaftController = searchShaft
+        self.shaftsSearchBar.delegate = searchShaftController
 
         createLeftButton()
         createHoleDimensionsDidChangeObserver()
@@ -29,6 +43,10 @@ class ShaftsViewController: UITableViewController, HolesOrShaftsVC {
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Helvetica Neue Bold", size: 20.0)!,
                                                                         NSAttributedString.Key.foregroundColor: AppDelegate.colorScheme.secondaryTextColor!]
 
+        self.tableView.keyboardDismissMode = .onDrag
+        
+        self.tableView.setContentOffset(CGPoint(x: 0, y: 56), animated: false)
+        
     }
 
     deinit {

@@ -9,7 +9,15 @@ import UIKit
 
 class HolesViewController: UITableViewController, HolesOrShaftsVC {
     
+    @IBOutlet weak var holesSearchBar: UISearchBar! {
+        didSet {
+            self.holesSearchBar.setShowsCancelButton(false, animated: false)
+            self.holesSearchBar.barTintColor = AppDelegate.colorScheme.barColor
+        }
+    }
+    
     var holesDataSource: HolesOrShaftsVCDataSource?
+    var searchHoleController: SearchHoleAndShaftController?
 
     var dataHolesModel = DataHolesAndShafts(choseFieldState: HoleFields.h)
 
@@ -21,6 +29,12 @@ class HolesViewController: UITableViewController, HolesOrShaftsVC {
 
         self.tableView.dataSource = holesDataSource
         self.tableView.delegate = holesDataSource
+        
+        let searchHole = SearchHoleAndShaftController(bar: self.holesSearchBar,
+                                      find: dataHolesModel,
+                                      tableForRefresh: self.tableView)
+        searchHoleController = searchHole
+        self.holesSearchBar.delegate = searchHoleController
 
         createLeftButton()
         createHoleDimensionsDidChangeObserver()
@@ -28,6 +42,10 @@ class HolesViewController: UITableViewController, HolesOrShaftsVC {
         self.navigationController?.navigationBar.barTintColor = AppDelegate.colorScheme.barColor
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Helvetica Neue Bold", size: 20.0)!,
                                                                         NSAttributedString.Key.foregroundColor: AppDelegate.colorScheme.secondaryTextColor!]
+        
+        self.tableView.keyboardDismissMode = .onDrag
+        
+        self.tableView.setContentOffset(CGPoint(x: 0, y: 56), animated: false)
 
     }
 

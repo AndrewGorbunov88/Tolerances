@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8925276E26960A080009B8BF /* SearchHoleAndShaftController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8925276D26960A080009B8BF /* SearchHoleAndShaftController.swift */; };
 		892B8FDF261F5F7B00D27104 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892B8FDE261F5F7B00D27104 /* AppDelegate.swift */; };
 		892B8FE1261F5F7B00D27104 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892B8FE0261F5F7B00D27104 /* SceneDelegate.swift */; };
 		892B8FE3261F5F7B00D27104 /* LinerDimensionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892B8FE2261F5F7B00D27104 /* LinerDimensionsViewController.swift */; };
@@ -34,6 +35,7 @@
 		89EBEE95265D593A00A0E20F /* HoleOrShaftCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EBEE94265D593A00A0E20F /* HoleOrShaftCell.swift */; };
 		89EBEE97265D5B2500A0E20F /* HolesOrShaftsVCDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EBEE96265D5B2500A0E20F /* HolesOrShaftsVCDataSource.swift */; };
 		89F618E3267DD86C00B14495 /* FirstCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F618E2267DD86C00B14495 /* FirstCell.swift */; };
+		89FF41582694AE3200715529 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FF41572694AE3200715529 /* SearchController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8925276D26960A080009B8BF /* SearchHoleAndShaftController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHoleAndShaftController.swift; sourceTree = "<group>"; };
 		892B8FDB261F5F7B00D27104 /* Tolerances.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tolerances.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		892B8FDE261F5F7B00D27104 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		892B8FE0261F5F7B00D27104 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -79,6 +82,7 @@
 		89EBEE94265D593A00A0E20F /* HoleOrShaftCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoleOrShaftCell.swift; sourceTree = "<group>"; };
 		89EBEE96265D5B2500A0E20F /* HolesOrShaftsVCDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolesOrShaftsVCDataSource.swift; sourceTree = "<group>"; };
 		89F618E2267DD86C00B14495 /* FirstCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstCell.swift; sourceTree = "<group>"; };
+		89FF41572694AE3200715529 /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				89EBEE92265D58F600A0E20F /* HolesViewController.swift */,
+				8925276D26960A080009B8BF /* SearchHoleAndShaftController.swift */,
 				89A86188267927C500165ED0 /* ShaftsViewController.swift */,
 				89EBEE96265D5B2500A0E20F /* HolesOrShaftsVCDataSource.swift */,
 				89EBEE94265D593A00A0E20F /* HoleOrShaftCell.swift */,
@@ -171,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				892B8FE2261F5F7B00D27104 /* LinerDimensionsViewController.swift */,
+				89FF41572694AE3200715529 /* SearchController.swift */,
 				899205AA2644528600371818 /* ShowTolerance.swift */,
 				892B8FF3261F687700D27104 /* ObjectDataSource.swift */,
 				899205AE26446D3600371818 /* TolerancePickerVC */,
@@ -328,6 +334,7 @@
 				892B8FDF261F5F7B00D27104 /* AppDelegate.swift in Sources */,
 				89BB0BD626234CC0007C8381 /* ItemCell.swift in Sources */,
 				892B8FE1261F5F7B00D27104 /* SceneDelegate.swift in Sources */,
+				89FF41582694AE3200715529 /* SearchController.swift in Sources */,
 				89CABAF82666A70800A13367 /* HolePickerViewDataSource.swift in Sources */,
 				892B8FF7261F68EF00D27104 /* DataStore.swift in Sources */,
 				898A648B264404EB00488AF0 /* HalfSizePresentationController.swift in Sources */,
@@ -337,6 +344,7 @@
 				896C6622265A45EF004D0DE7 /* DataHolesAndShafts.swift in Sources */,
 				89EBEE93265D58F600A0E20F /* HolesViewController.swift in Sources */,
 				89CABAF52665560B00A13367 /* HolesTolerancePickerViewController.swift in Sources */,
+				8925276E26960A080009B8BF /* SearchHoleAndShaftController.swift in Sources */,
 				896C6626265A5D99004D0DE7 /* HolesSizes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

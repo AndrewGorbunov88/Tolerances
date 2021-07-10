@@ -215,6 +215,14 @@ class DataHolesAndShafts {
         
     }
     
+    private var sortedHolesOrShaftsDimensions: [(range: ClosedRange<Double>?,
+                                                 es: Double?,
+                                                 ei: Double?,
+                                                 unit: UnitLength?)] = []
+    
+    private var buferNameSizes = [String]()
+    private var sortedNameSizes = [String]()
+    
     private var bufferDimensionsHoles: [(range: ClosedRange<Double>?,
                                          es: Double?,
                                          ei: Double?,
@@ -242,7 +250,11 @@ class DataHolesAndShafts {
     
     var getTolerancesCountForCell: Int {
         get {
-            dimensionsHolesOrShafts.count
+            if sortedHolesOrShaftsDimensions.isEmpty {
+                return dimensionsHolesOrShafts.count
+            } else {
+                return sortedHolesOrShaftsDimensions.count
+            }
         }
     }
     
@@ -414,12 +426,25 @@ class DataHolesAndShafts {
     }
     
     func getDataForCell(at index: Int) -> (range: ClosedRange<Double>?, es: Double?, ei: Double?, unit: UnitLength?) {
-        let range = dimensionsHolesOrShafts[index].range
-        let esTolerance = dimensionsHolesOrShafts[index].es ?? 0.0
-        let eiTolerance = dimensionsHolesOrShafts[index].ei ?? 0.0
-        let unit = dimensionsHolesOrShafts[index].unit ?? .micrometers
         
-        return (range: range, es: esTolerance, ei: eiTolerance, unit: unit)
+        if sortedHolesOrShaftsDimensions.isEmpty {
+            let range = dimensionsHolesOrShafts[index].range
+            let esTolerance = dimensionsHolesOrShafts[index].es ?? 0.0
+            let eiTolerance = dimensionsHolesOrShafts[index].ei ?? 0.0
+            let unit = dimensionsHolesOrShafts[index].unit ?? .micrometers
+            
+            return (range: range, es: esTolerance, ei: eiTolerance, unit: unit)
+        } else {
+            
+            let range = sortedHolesOrShaftsDimensions[index].range
+            let esTolerance = sortedHolesOrShaftsDimensions[index].es ?? 0.0
+            let eiTolerance = sortedHolesOrShaftsDimensions[index].ei ?? 0.0
+            let unit = sortedHolesOrShaftsDimensions[index].unit ?? .micrometers
+            
+            return (range: range, es: esTolerance, ei: eiTolerance, unit: unit)
+            
+        }
+        
     }
     
     func getNameTolerances(at index: Int) -> String {
@@ -428,21 +453,62 @@ class DataHolesAndShafts {
         if choseFieldState is HoleFields {
             switch choseFieldState as? HoleFields {
             case .a:
-                return nameABCHolesAndShaftsSizes[index]
+                buferNameSizes = nameABCHolesAndShaftsSizes
+                if sortedNameSizes.isEmpty {
+                    return nameABCHolesAndShaftsSizes[index]
+                } else {
+                    return sortedNameSizes[index]
+                }
             case .b:
-                return nameABCHolesAndShaftsSizes[index]
+                buferNameSizes = nameABCHolesAndShaftsSizes
+                if sortedNameSizes.isEmpty {
+                    return nameABCHolesAndShaftsSizes[index]
+                } else {
+                    return sortedNameSizes[index]
+                }
             case .c:
-                return nameABCHolesAndShaftsSizes[index]
+                buferNameSizes = nameABCHolesAndShaftsSizes
+                if sortedNameSizes.isEmpty {
+                    return nameABCHolesAndShaftsSizes[index]
+                } else {
+                    return sortedNameSizes[index]
+                }
             case .r:
-                return nameRSHolesSAndShaftSizes[index]
+                buferNameSizes = nameRSHolesSAndShaftSizes
+                if sortedNameSizes.isEmpty {
+                    return nameRSHolesSAndShaftSizes[index]
+                } else {
+                    return sortedNameSizes[index]
+                }
             case .s:
-                return nameRSHolesSAndShaftSizes[index]
+                buferNameSizes = nameRSHolesSAndShaftSizes
+                if sortedNameSizes.isEmpty {
+                    return nameRSHolesSAndShaftSizes[index]
+                } else {
+                    return sortedNameSizes[index]
+                }
             case .t:
-                return nameTHolesAndShaftsSizes[index]
+                buferNameSizes = nameTHolesAndShaftsSizes
+                if sortedNameSizes.isEmpty {
+                    return nameTHolesAndShaftsSizes[index]
+                } else {
+                    return sortedNameSizes[index]
+                }
             case .u:
-                return nameUHolesAndShaftsSizes[index]
+                buferNameSizes = nameUHolesAndShaftsSizes
+                if sortedNameSizes.isEmpty {
+                    return nameUHolesAndShaftsSizes[index]
+                } else {
+                    return sortedNameSizes[index]
+                }
             default:
-                return nameSize[index]
+                buferNameSizes = nameSize
+                
+                if sortedNameSizes.isEmpty {
+                    return nameSize[index]
+                } else {
+                    return sortedNameSizes[index]
+                }
             }
         }
         
@@ -450,29 +516,105 @@ class DataHolesAndShafts {
         if choseFieldState is ShaftFields {
             switch choseFieldState as! ShaftFields {
             case .a:
-                return nameABCHolesAndShaftsSizes[index]
+                buferNameSizes = nameABCHolesAndShaftsSizes
+                if sortedNameSizes.isEmpty {
+                    return nameABCHolesAndShaftsSizes[index]
+                } else {
+                    return sortedNameSizes[index]
+                }
             case .b:
-                return nameABCHolesAndShaftsSizes[index]
+                buferNameSizes = nameABCHolesAndShaftsSizes
+                if sortedNameSizes.isEmpty {
+                    return nameABCHolesAndShaftsSizes[index]
+                } else {
+                    return sortedNameSizes[index]
+                }
             case .c:
-                return nameABCHolesAndShaftsSizes[index]
+                buferNameSizes = nameABCHolesAndShaftsSizes
+                if sortedNameSizes.isEmpty {
+                    return nameABCHolesAndShaftsSizes[index]
+                } else {
+                    return sortedNameSizes[index]
+                }
             case .r:
-                return nameRSHolesSAndShaftSizes[index]
+                buferNameSizes = nameRSHolesSAndShaftSizes
+                if sortedNameSizes.isEmpty {
+                    return nameRSHolesSAndShaftSizes[index]
+                } else {
+                    return sortedNameSizes[index]
+                }
             case .s:
-                return nameRSHolesSAndShaftSizes[index]
+                buferNameSizes = nameRSHolesSAndShaftSizes
+                if sortedNameSizes.isEmpty {
+                    return nameRSHolesSAndShaftSizes[index]
+                } else {
+                    return sortedNameSizes[index]
+                }
             case .t:
-                return nameTHolesAndShaftsSizes[index]
+                buferNameSizes = nameTHolesAndShaftsSizes
+                if sortedNameSizes.isEmpty {
+                    return nameTHolesAndShaftsSizes[index]
+                } else {
+                    return sortedNameSizes[index]
+                }
             case .u:
-                return nameUHolesAndShaftsSizes[index]
+                buferNameSizes = nameUHolesAndShaftsSizes
+                if sortedNameSizes.isEmpty {
+                    return nameUHolesAndShaftsSizes[index]
+                } else {
+                    return sortedNameSizes[index]
+                }
             case .x:
-                return nameXZShaftsSizes[index]
+                buferNameSizes = nameXZShaftsSizes
+                if sortedNameSizes.isEmpty {
+                    return nameXZShaftsSizes[index]
+                } else {
+                    return sortedNameSizes[index]
+                }
             case .z:
-                return nameXZShaftsSizes[index]
+                buferNameSizes = nameXZShaftsSizes
+                if sortedNameSizes.isEmpty {
+                    return nameXZShaftsSizes[index]
+                } else {
+                    return sortedNameSizes[index]
+                }
             default:
-                return nameSize[index]
+                buferNameSizes = nameSize
+                if sortedNameSizes.isEmpty {
+                    return nameSize[index]
+                } else {
+                    return sortedNameSizes[index]
+                }
             }
         }
         
         return ""
+        
+    }
+    
+}
+
+extension DataHolesAndShafts: UserSearchingDimension {
+    
+    func tolerance(in size: String) {
+        var sizeFromString = size
+        sortedNameSizes = []
+        
+        if sizeFromString.last == "." {
+            sizeFromString += "0"
+        }
+        
+        let dimensionValue = Double(sizeFromString)
+        sortedHolesOrShaftsDimensions = []
+        
+        for dimension in 0..<dimensionsHolesOrShafts.count {
+            
+            if sizeFromString.count > 0 && dimensionsHolesOrShafts[dimension].range?.contains(dimensionValue!) == true {
+                sortedHolesOrShaftsDimensions.append(dimensionsHolesOrShafts[dimension])
+                sortedNameSizes.append(buferNameSizes[dimension])
+            }
+            
+        }
         
     }
     

@@ -19,8 +19,7 @@ class LinerDimensionsViewController: UITableViewController, UISearchBarDelegate 
     }
     
     private var dataSourceAndDelegate: ObjectDataSource?
-    
-    private var findIn: UserSearchingDimension?
+    private var searchBarDelegate: SearchController?
     
     var toleranceValueTuple: (tolerance: Double, symbol: String)? {
         didSet {
@@ -39,12 +38,14 @@ class LinerDimensionsViewController: UITableViewController, UISearchBarDelegate 
         
         let data = ObjectDataSource(vc: self)
         dataSourceAndDelegate = data
-        
         tableView.dataSource = dataSourceAndDelegate
         tableView.delegate = dataSourceAndDelegate
         
-        linerSearchBar.delegate = self
-        self.findIn = dataSourceAndDelegate?.data
+        let search = SearchController(bar: self.linerSearchBar,
+                                      find: dataSourceAndDelegate!.data,
+                                      tableForRefresh: self.tableView)
+        searchBarDelegate = search
+        self.linerSearchBar.delegate = searchBarDelegate
         
         createToleranceDidChangeObserver()
         createLeftButton()
@@ -52,6 +53,10 @@ class LinerDimensionsViewController: UITableViewController, UISearchBarDelegate 
         self.navigationController?.navigationBar.barTintColor = AppDelegate.colorScheme.barColor
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Helvetica Neue Bold", size: 20.0)!,
                                                                         NSAttributedString.Key.foregroundColor: AppDelegate.colorScheme.secondaryTextColor!]
+        
+        self.tableView.keyboardDismissMode = .onDrag
+        
+        self.tableView.setContentOffset(CGPoint(x: 0, y: 56), animated: false)
         
     }
     
@@ -99,25 +104,6 @@ class LinerDimensionsViewController: UITableViewController, UISearchBarDelegate 
         }()
         
         self.navigationItem.leftBarButtonItem = chooseToleranceButton
-    }
-    
-    //MARK: - UISearchBarDelegate
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        searchBar.setShowsCancelButton(true, animated: true)
-    }
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
-    }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
-        searchBar.setShowsCancelButton(false, animated: true)
-    }
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        self.findIn?.tolerance(in: searchBar.text!)
-        self.tableView.reloadData()
     }
         
 }

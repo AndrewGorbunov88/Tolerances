@@ -56,9 +56,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Введи размер отверстия" showsCancelButton="YES" id="4Je-Dn-ZHp">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="continue"/>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Hole Tolerances" rowHeight="60" id="Ye5-gE-QLw" customClass="HoleOrShaftCell" customModule="Tolerances" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="24.5" width="414" height="60"/>
+                                <rect key="frame" x="0.0" y="68.5" width="414" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ye5-gE-QLw" id="efI-Bc-dvt">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
@@ -114,6 +119,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Отверстия" id="GJH-aD-hfJ"/>
+                    <connections>
+                        <outlet property="holesSearchBar" destination="4Je-Dn-ZHp" id="1Wy-iZ-4N1"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1sf-YD-usk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -291,9 +299,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Введи размер вала" showsCancelButton="YES" id="Udu-3f-25I">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="continue"/>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Hole Tolerances" rowHeight="60" id="afg-bC-IYo" customClass="HoleOrShaftCell" customModule="Tolerances" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="24.5" width="414" height="60"/>
+                                <rect key="frame" x="0.0" y="68.5" width="414" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="afg-bC-IYo" id="bM7-6u-sVp">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
@@ -349,6 +362,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Валы" id="dIw-xR-Cgo"/>
+                    <connections>
+                        <outlet property="shaftsSearchBar" destination="Udu-3f-25I" id="AaB-Jh-n1w"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uh0-R3-vIY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
