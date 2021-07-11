@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8925276E26960A080009B8BF /* SearchHoleAndShaftController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8925276D26960A080009B8BF /* SearchHoleAndShaftController.swift */; };
 		892B8FDF261F5F7B00D27104 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892B8FDE261F5F7B00D27104 /* AppDelegate.swift */; };
 		892B8FE1261F5F7B00D27104 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892B8FE0261F5F7B00D27104 /* SceneDelegate.swift */; };
 		892B8FE3261F5F7B00D27104 /* LinerDimensionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892B8FE2261F5F7B00D27104 /* LinerDimensionsViewController.swift */; };
@@ -49,7 +48,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		8925276D26960A080009B8BF /* SearchHoleAndShaftController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHoleAndShaftController.swift; sourceTree = "<group>"; };
 		892B8FDB261F5F7B00D27104 /* Tolerances.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tolerances.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		892B8FDE261F5F7B00D27104 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		892B8FE0261F5F7B00D27104 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -141,7 +139,6 @@
 			isa = PBXGroup;
 			children = (
 				89EBEE92265D58F600A0E20F /* HolesViewController.swift */,
-				8925276D26960A080009B8BF /* SearchHoleAndShaftController.swift */,
 				89A86188267927C500165ED0 /* ShaftsViewController.swift */,
 				89EBEE96265D5B2500A0E20F /* HolesOrShaftsVCDataSource.swift */,
 				89EBEE94265D593A00A0E20F /* HoleOrShaftCell.swift */,
@@ -344,7 +341,6 @@
 				896C6622265A45EF004D0DE7 /* DataHolesAndShafts.swift in Sources */,
 				89EBEE93265D58F600A0E20F /* HolesViewController.swift in Sources */,
 				89CABAF52665560B00A13367 /* HolesTolerancePickerViewController.swift in Sources */,
-				8925276E26960A080009B8BF /* SearchHoleAndShaftController.swift in Sources */,
 				896C6626265A5D99004D0DE7 /* HolesSizes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -9,17 +9,15 @@ import UIKit
 
 class SearchController: NSObject, UISearchBarDelegate {
 
-    weak var searchBar: UISearchBar?
-    weak var parentTableView: UITableView?
-    weak var data: DataStore?
+    private weak var searchBar: UISearchBar?
+    private weak var parentTableView: UITableView?
     
     private var findIn: UserSearchingDimension?    
     
-    init(bar: UISearchBar, find inModel: DataStore, tableForRefresh: UITableView) {
+    init(bar: UISearchBar, findIn inModel: UserSearchingDimension, tableForRefresh: UITableView) {
         self.searchBar = bar
-        self.data = inModel
+        self.findIn = inModel
         self.parentTableView = tableForRefresh
-        self.findIn = data
     }
     
     //MARK: - UISearchBarDelegate

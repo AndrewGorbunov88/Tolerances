@@ -42,7 +42,7 @@ class LinerDimensionsViewController: UITableViewController, UISearchBarDelegate 
         tableView.delegate = dataSourceAndDelegate
         
         let search = SearchController(bar: self.linerSearchBar,
-                                      find: dataSourceAndDelegate!.data,
+                                      findIn: dataSourceAndDelegate!.data,
                                       tableForRefresh: self.tableView)
         searchBarDelegate = search
         self.linerSearchBar.delegate = searchBarDelegate

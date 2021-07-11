@@ -17,7 +17,7 @@ class HolesViewController: UITableViewController, HolesOrShaftsVC {
     }
     
     var holesDataSource: HolesOrShaftsVCDataSource?
-    var searchHoleController: SearchHoleAndShaftController?
+    var searchHoleController: SearchController?
 
     var dataHolesModel = DataHolesAndShafts(choseFieldState: HoleFields.h)
 
@@ -30,9 +30,9 @@ class HolesViewController: UITableViewController, HolesOrShaftsVC {
         self.tableView.dataSource = holesDataSource
         self.tableView.delegate = holesDataSource
         
-        let searchHole = SearchHoleAndShaftController(bar: self.holesSearchBar,
-                                      find: dataHolesModel,
-                                      tableForRefresh: self.tableView)
+        let searchHole = SearchController(bar: self.holesSearchBar,
+                                          findIn: dataHolesModel,
+                                          tableForRefresh: self.tableView)
         searchHoleController = searchHole
         self.holesSearchBar.delegate = searchHoleController
 
