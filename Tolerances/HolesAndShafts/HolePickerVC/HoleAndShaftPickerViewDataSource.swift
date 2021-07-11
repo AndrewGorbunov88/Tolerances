@@ -7,13 +7,13 @@
 
 import UIKit
 
-class HolePickerViewDataSource: NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
+class HoleAndShaftPickerViewDataSource: NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
     
-    weak var parentHoleVC: HolesTolerancePickerViewController!
+    weak var parentHoleVC: HolesAndShaftsTolerancePickerViewController!
     
     private var componentWasSelected = 0
     
-    init(vc: HolesTolerancePickerViewController, state: Int) {
+    init(vc: HolesAndShaftsTolerancePickerViewController, state: Int) {
         self.parentHoleVC = vc
         self.componentWasSelected = state
     }
@@ -24,9 +24,9 @@ class HolePickerViewDataSource: NSObject, UIPickerViewDataSource, UIPickerViewDe
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if component == 0 {
-            return parentHoleVC.holeModel.getFieldsCountForPickerView
+            return parentHoleVC.holeAndShaftModel.getFieldsCountForPickerView
         } else {
-            return parentHoleVC.holeModel.getToleranceCountForPickerView
+            return parentHoleVC.holeAndShaftModel.getToleranceCountForPickerView
         }
     }
     
@@ -37,9 +37,9 @@ class HolePickerViewDataSource: NSObject, UIPickerViewDataSource, UIPickerViewDe
         
         switch component {
         case 0:
-            resultString = parentHoleVC.holeModel.getFieldNameForRowsInPickerView(with: row)
+            resultString = parentHoleVC.holeAndShaftModel.getFieldNameForRowsInPickerView(with: row)
         case 1:
-            resultString = parentHoleVC.holeModel.getTolerancesNameForRowsInPickerView(with: row)
+            resultString = parentHoleVC.holeAndShaftModel.getTolerancesNameForRowsInPickerView(with: row)
             
         default: break
         }
@@ -55,10 +55,10 @@ class HolePickerViewDataSource: NSObject, UIPickerViewDataSource, UIPickerViewDe
         
         switch component {
         case 0:
-            parentHoleVC.holeModel.setHoleOrShaftFieldForTable(at: row, and: componentWasSelected)
+            parentHoleVC.holeAndShaftModel.setHoleOrShaftFieldForTable(at: row, and: componentWasSelected)
             pickerView.reloadComponent(1)
         case 1:
-            parentHoleVC.holeModel.setDimensionsHolesOrShaftsForTable(at: row)
+            parentHoleVC.holeAndShaftModel.setDimensionsHolesOrShaftsForTable(at: row)
             componentWasSelected = row
         default: break
         }

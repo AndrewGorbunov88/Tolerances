@@ -77,12 +77,12 @@ class HolesViewController: UITableViewController, HolesOrShaftsVC {
     }
 
     @objc private func pickHoleField() {
-        let holeTolerancePickerView = storyboard?.instantiateViewController(identifier: "HolesTolerancePickerViewController") as! HolesTolerancePickerViewController
+        let holeTolerancePickerView = storyboard?.instantiateViewController(identifier: "HolesAndShaftsTolerancePickerViewController") as! HolesAndShaftsTolerancePickerViewController
         holeTolerancePickerView.modalPresentationStyle = .custom
         holeTolerancePickerView.transitioningDelegate = self
         holeTolerancePickerView.set(state: HoleFields.h as Fields)
-        holeTolerancePickerView.holeModel = dataHolesModel
-        holeTolerancePickerView.holeModel.setBuffers()
+        holeTolerancePickerView.holeAndShaftModel = dataHolesModel
+        holeTolerancePickerView.holeAndShaftModel.setBuffers()
 
         present(holeTolerancePickerView, animated: true, completion: nil)
     }

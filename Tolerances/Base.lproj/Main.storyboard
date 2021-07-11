@@ -127,10 +127,10 @@
             </objects>
             <point key="canvasLocation" x="740.57971014492762" y="1537.5"/>
         </scene>
-        <!--Holes Tolerance Picker View Controller-->
+        <!--Holes And Shafts Tolerance Picker View Controller-->
         <scene sceneID="aYQ-k4-ca1">
             <objects>
-                <viewController storyboardIdentifier="HolesTolerancePickerViewController" id="YyP-i7-gNP" customClass="HolesTolerancePickerViewController" customModule="Tolerances" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HolesAndShaftsTolerancePickerViewController" id="YyP-i7-gNP" customClass="HolesAndShaftsTolerancePickerViewController" customModule="Tolerances" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="953-rK-MXj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

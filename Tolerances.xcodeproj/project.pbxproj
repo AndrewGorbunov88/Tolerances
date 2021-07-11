@@ -27,8 +27,8 @@
 		89B4C6002645C06E0014ED4A /* TolerancesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B4C5FF2645C06E0014ED4A /* TolerancesTests.swift */; };
 		89BB0BD626234CC0007C8381 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BB0BD526234CC0007C8381 /* ItemCell.swift */; };
 		89BE841026517B06001A7999 /* DataStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BE840F26517B06001A7999 /* DataStoreTests.swift */; };
-		89CABAF52665560B00A13367 /* HolesTolerancePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CABAF42665560B00A13367 /* HolesTolerancePickerViewController.swift */; };
-		89CABAF82666A70800A13367 /* HolePickerViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CABAF72666A70800A13367 /* HolePickerViewDataSource.swift */; };
+		89CABAF52665560B00A13367 /* HolesAndShaftsTolerancePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CABAF42665560B00A13367 /* HolesAndShaftsTolerancePickerViewController.swift */; };
+		89CABAF82666A70800A13367 /* HoleAndShaftPickerViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CABAF72666A70800A13367 /* HoleAndShaftPickerViewDataSource.swift */; };
 		89D217CC262F3B9D00BE2F6C /* TolerancePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D217CB262F3B9D00BE2F6C /* TolerancePickerViewController.swift */; };
 		89EBEE93265D58F600A0E20F /* HolesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EBEE92265D58F600A0E20F /* HolesViewController.swift */; };
 		89EBEE95265D593A00A0E20F /* HoleOrShaftCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EBEE94265D593A00A0E20F /* HoleOrShaftCell.swift */; };
@@ -73,8 +73,8 @@
 		89B4C6012645C06E0014ED4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		89BB0BD526234CC0007C8381 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		89BE840F26517B06001A7999 /* DataStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStoreTests.swift; sourceTree = "<group>"; };
-		89CABAF42665560B00A13367 /* HolesTolerancePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolesTolerancePickerViewController.swift; sourceTree = "<group>"; };
-		89CABAF72666A70800A13367 /* HolePickerViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolePickerViewDataSource.swift; sourceTree = "<group>"; };
+		89CABAF42665560B00A13367 /* HolesAndShaftsTolerancePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolesAndShaftsTolerancePickerViewController.swift; sourceTree = "<group>"; };
+		89CABAF72666A70800A13367 /* HoleAndShaftPickerViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoleAndShaftPickerViewDataSource.swift; sourceTree = "<group>"; };
 		89D217CB262F3B9D00BE2F6C /* TolerancePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TolerancePickerViewController.swift; sourceTree = "<group>"; };
 		89EBEE92265D58F600A0E20F /* HolesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolesViewController.swift; sourceTree = "<group>"; };
 		89EBEE94265D593A00A0E20F /* HoleOrShaftCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoleOrShaftCell.swift; sourceTree = "<group>"; };
@@ -214,8 +214,8 @@
 		89CABAF62666A64900A13367 /* HolePickerVC */ = {
 			isa = PBXGroup;
 			children = (
-				89CABAF42665560B00A13367 /* HolesTolerancePickerViewController.swift */,
-				89CABAF72666A70800A13367 /* HolePickerViewDataSource.swift */,
+				89CABAF42665560B00A13367 /* HolesAndShaftsTolerancePickerViewController.swift */,
+				89CABAF72666A70800A13367 /* HoleAndShaftPickerViewDataSource.swift */,
 			);
 			path = HolePickerVC;
 			sourceTree = "<group>";
@@ -332,7 +332,7 @@
 				89BB0BD626234CC0007C8381 /* ItemCell.swift in Sources */,
 				892B8FE1261F5F7B00D27104 /* SceneDelegate.swift in Sources */,
 				89FF41582694AE3200715529 /* SearchController.swift in Sources */,
-				89CABAF82666A70800A13367 /* HolePickerViewDataSource.swift in Sources */,
+				89CABAF82666A70800A13367 /* HoleAndShaftPickerViewDataSource.swift in Sources */,
 				892B8FF7261F68EF00D27104 /* DataStore.swift in Sources */,
 				898A648B264404EB00488AF0 /* HalfSizePresentationController.swift in Sources */,
 				892B8FF4261F687700D27104 /* ObjectDataSource.swift in Sources */,
@@ -340,7 +340,7 @@
 				89A8618B2679F2D000165ED0 /* ShaftsSizes.swift in Sources */,
 				896C6622265A45EF004D0DE7 /* DataHolesAndShafts.swift in Sources */,
 				89EBEE93265D58F600A0E20F /* HolesViewController.swift in Sources */,
-				89CABAF52665560B00A13367 /* HolesTolerancePickerViewController.swift in Sources */,
+				89CABAF52665560B00A13367 /* HolesAndShaftsTolerancePickerViewController.swift in Sources */,
 				896C6626265A5D99004D0DE7 /* HolesSizes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

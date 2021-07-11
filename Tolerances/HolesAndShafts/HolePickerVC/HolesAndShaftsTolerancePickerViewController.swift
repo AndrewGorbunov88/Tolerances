@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HolesTolerancePickerViewController: UIViewController {
+class HolesAndShaftsTolerancePickerViewController: UIViewController {
     
     private var state: Fields?
     
@@ -15,9 +15,9 @@ class HolesTolerancePickerViewController: UIViewController {
 //    private var stateHoleField: HoleFields = .h
     private var stateDimension: Int?
     
-    weak var holeModel: DataHolesAndShafts!
+    weak var holeAndShaftModel: DataHolesAndShafts!
     
-    private var pickerHoleDataSourceDelegate: HolePickerViewDataSource?
+    private var pickerHoleDataSourceDelegate: HoleAndShaftPickerViewDataSource?
     
     @IBOutlet weak var holeCancelButton: UIBarButtonItem! {
         didSet {
@@ -43,17 +43,17 @@ class HolesTolerancePickerViewController: UIViewController {
         super.viewDidLoad()
 
         if state is HoleFields {
-            self.stateHoleField = holeModel.getChooseState as! HoleFields
-            self.stateDimension = holeModel.getDimensionState
+            self.stateHoleField = holeAndShaftModel.getChooseState as! HoleFields
+            self.stateDimension = holeAndShaftModel.getDimensionState
         }
         
         if state is ShaftFields {
-            self.stateHoleField = holeModel.getChooseState as! ShaftFields
-            self.stateDimension = holeModel.getDimensionState
+            self.stateHoleField = holeAndShaftModel.getChooseState as! ShaftFields
+            self.stateDimension = holeAndShaftModel.getDimensionState
         }
         
         
-        let holePickerControl = HolePickerViewDataSource(vc: self, state: stateDimension!)
+        let holePickerControl = HoleAndShaftPickerViewDataSource(vc: self, state: stateDimension!)
         pickerHoleDataSourceDelegate = holePickerControl
         
         holeTolerancePickerView.dataSource = pickerHoleDataSourceDelegate
@@ -64,11 +64,11 @@ class HolesTolerancePickerViewController: UIViewController {
     }
     
     deinit {
-        self.holeModel.clearBuffers()
+        self.holeAndShaftModel.clearBuffers()
     }
 
     @IBAction func cancelHolePickerViewAction(_ sender: Any) {
-        self.holeModel.setAllDimensionsFromBuffers()
+        self.holeAndShaftModel.setAllDimensionsFromBuffers()
         dismiss(animated: true, completion: nil)
     }
     
