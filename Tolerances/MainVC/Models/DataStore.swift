@@ -685,9 +685,10 @@ class DataStore {
 extension DataStore: UserSearchingDimension {
     
     func tolerance(in size: String) {
-        var sizeFromString = size
         
-        if sizeFromString.last == "." {
+        var sizeFromString = size.replacingOccurrences(of: ",", with: ".", options: .literal, range: nil)
+        
+        if sizeFromString.last == "." || sizeFromString.last == "," {
             sizeFromString += "0"
         }
         

@@ -597,7 +597,7 @@ class DataHolesAndShafts {
 extension DataHolesAndShafts: UserSearchingDimension {
     
     func tolerance(in size: String) {
-        var sizeFromString = size
+        var sizeFromString = size.replacingOccurrences(of: ",", with: ".", options: .literal, range: nil)
         sortedNameSizes = []
         
         if sizeFromString.last == "." {

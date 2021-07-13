@@ -35,6 +35,7 @@ class SearchController: NSObject, UISearchBarDelegate {
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchBar.text = searchText.replacingOccurrences(of: ",", with: ".", options: .literal, range: nil)
         self.findIn?.tolerance(in: searchBar.text!)
         self.parentTableView!.reloadData()
     }
