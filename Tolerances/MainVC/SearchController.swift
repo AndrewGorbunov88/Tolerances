@@ -35,9 +35,33 @@ class SearchController: NSObject, UISearchBarDelegate {
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        searchBar.text = searchText.replacingOccurrences(of: ",", with: ".", options: .literal, range: nil)
         self.findIn?.tolerance(in: searchBar.text!)
         self.parentTableView!.reloadData()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        
+        let digitsSet = CharacterSet.decimalDigits.inverted
+        let components = text.components(separatedBy: digitsSet)
+        let filteredString = components.joined(separator: "")
+        
+        if filteredString == text {
+            return true
+        } else {
+            if text == "." || text == "," {
+                let countDots = searchBar.text!.components(separatedBy:".").count - 1
+                let countCommas = searchBar.text!.components(separatedBy:",").count - 1
+                
+                if countDots == 0 && countCommas == 0 {
+                    return true
+                } else {
+                    return false
+                }
+            } else  {
+                return false
+            }
+        }
+        
     }
     
 }
