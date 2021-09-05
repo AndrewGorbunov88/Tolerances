@@ -184,7 +184,7 @@
         <scene sceneID="YOw-AO-nJm">
             <objects>
                 <navigationController id="D0Q-k7-I3E" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Отверстия" image="Hole" id="23s-Fe-Kja"/>
+                    <tabBarItem key="tabBarItem" title="Отверстия" image="Hole Regular 50x50 2x" landscapeImage="Hole Regular 50x50 2x" id="23s-Fe-Kja"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="qUD-HG-LsJ">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -254,11 +254,11 @@
             </objects>
             <point key="canvasLocation" x="-1880" y="1538"/>
         </scene>
-        <!--Линейные размеры-->
+        <!--Navigation Controller-->
         <scene sceneID="gfT-LF-6L0">
             <objects>
                 <navigationController id="S8V-Ur-8QA" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Линейные размеры" image="Ruler" id="EdT-Lp-X11"/>
+                    <tabBarItem key="tabBarItem" title="" image="Ruler" id="EdT-Lp-X11"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ErJ-5s-RtG">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -370,11 +370,11 @@
             </objects>
             <point key="canvasLocation" x="2290" y="1538"/>
         </scene>
-        <!--Валы-->
+        <!--Navigation Controller-->
         <scene sceneID="zPO-pq-Hig">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tmK-7A-EWp" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Валы" image="Shaft" id="a3y-5J-XgE"/>
+                    <tabBarItem key="tabBarItem" title="" image="Shaft" id="a3y-5J-XgE"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="y0y-aT-Kuh">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -391,7 +391,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Hole" width="32" height="32"/>
+        <image name="Hole Regular 50x50 2x" width="23" height="23"/>
         <image name="Ruler" width="32" height="32"/>
         <image name="Shaft" width="32" height="32"/>
         <systemColor name="systemBackgroundColor">

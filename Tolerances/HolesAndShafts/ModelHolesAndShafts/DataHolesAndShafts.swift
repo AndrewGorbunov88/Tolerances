@@ -63,6 +63,7 @@ class DataHolesAndShafts {
     private var bufferNameDimension = ""
     private var bufferChoseFieldState: Fields?
     private var bufferChoseDimensionState: Int?
+    private var searchState = false
     
     private let nameSize = ["До 3 мм",
                             "Св. 3 до 6 мм",
@@ -251,7 +252,7 @@ class DataHolesAndShafts {
     var getTolerancesCountForCell: Int {
         get {
             if sortedHolesOrShaftsDimensions.isEmpty {
-                return dimensionsHolesOrShafts.count
+                return self.searchState ? 0 : dimensionsHolesOrShafts.count
             } else {
                 return sortedHolesOrShaftsDimensions.count
             }
@@ -600,6 +601,10 @@ extension DataHolesAndShafts: UserSearchingDimension {
         var sizeFromString = size.replacingOccurrences(of: ",", with: ".", options: .literal, range: nil)
         sortedNameSizes = []
         
+        if sizeFromString.isEmpty {
+            self.searchState = false
+        }
+        
         if sizeFromString.last == "." {
             sizeFromString += "0"
         }
@@ -612,6 +617,7 @@ extension DataHolesAndShafts: UserSearchingDimension {
             if sizeFromString.count > 0 && dimensionsHolesOrShafts[dimension].range?.contains(dimensionValue!) == true {
                 sortedHolesOrShaftsDimensions.append(dimensionsHolesOrShafts[dimension])
                 sortedNameSizes.append(buferNameSizes[dimension])
+                self.searchState = true
             }
             
         }

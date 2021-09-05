@@ -9,6 +9,8 @@ import Foundation
 
 class DataStore {
     
+    private var searchState = false
+    
     private var stateTolerance: ChosenTolerance? {
         didSet {
             installRangeAndToleranceInDimensions()
@@ -577,7 +579,7 @@ class DataStore {
     var getAllDimensions: Int {
         get {
             if sortedDimensions.isEmpty {
-                return dimensions.count
+                return self.searchState ? 0 : dimensions.count
             } else {
                 return sortedDimensions.count
             }
@@ -688,6 +690,10 @@ extension DataStore: UserSearchingDimension {
         
         var sizeFromString = size.replacingOccurrences(of: ",", with: ".", options: .literal, range: nil)
         
+        if sizeFromString.isEmpty {
+            self.searchState = false
+        }
+        
         if sizeFromString.last == "." || sizeFromString.last == "," {
             sizeFromString += "0"
         }
@@ -699,6 +705,7 @@ extension DataStore: UserSearchingDimension {
             
             if sizeFromString.count > 0 && dimension.range?.contains(dimensionValue!) == true {
                 sortedDimensions.append(dimension)
+                self.searchState = true
             }
             
         }
