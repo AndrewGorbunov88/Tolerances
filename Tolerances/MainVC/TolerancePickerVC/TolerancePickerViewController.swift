@@ -6,10 +6,22 @@
 //
 
 import UIKit
+import CoreData
 
 class TolerancePickerViewController: UIViewController {
     
-    private var stateTolerance: ChosenTolerance? = .it12
+    weak var dataFromModel: DataStore!
+    
+    private var stateTolerance: ChosenTolerance? {
+        didSet {
+            let toleranceInfo = ["didToleranceChange": stateTolerance]
+            NotificationCenter.default.post(name: .didToleranceChange, object: nil, userInfo: toleranceInfo as [AnyHashable : Any])
+            
+            if let senderTolerance = stateTolerance {
+                self.delegate?.sendTolerance(senderTolerance)
+            }
+        }
+    }
         
     var delegate: SetTolerance?
     
@@ -44,19 +56,46 @@ class TolerancePickerViewController: UIViewController {
         tolerancePickerView.delegate = pickerDataSourceDelegate
         tolerancePickerView.dataSource = pickerDataSourceDelegate
         
+        self.stateTolerance = dataFromModel.getStateToleranceValue
+        
         setDefaultRowOfPickerView(item: stateTolerance!)
         
     }
     
+    deinit {
+        self.dataFromModel.clearBuffers()
+    }
+    
     @IBAction func cancelButtonAction(_ sender: UIBarButtonItem) {
+        self.dataFromModel.setAllDimensionsFromBuffers()
         self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func selectButtonAction(_ sender: Any) {
-        if let senderTolerance = stateTolerance {
-            self.delegate?.sendTolerance(senderTolerance)            
-        }
+        
+        print("\(stateTolerance!.rawValue)")
+
+        saveToleranceInData()
+        
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    private func saveToleranceInData() {
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        
+        let request = NSFetchRequest<LinearTolerance>(entityName: "LinearTolerance")
+        
+        do {
+            let resultArray = try context.fetch(request)
+            resultArray.first?.tolerance = self.stateTolerance!.rawValue
+            
+            try context.save()
+        } catch {
+            print("Error")
+        }
+        
     }
     
     @objc private func refreshTolerance(notification: Notification) {

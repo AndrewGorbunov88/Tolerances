@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class ObjectDataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
     
@@ -14,10 +15,34 @@ class ObjectDataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
     private static let cell = "Cell"
     private let sizeHeader: CGFloat = 40.0
     
-    var data = DataStore(with: .it12)
+    var data = DataStore()
     
     init(vc: LinerDimensionsViewController) {
         self.parentVC = vc
+    }
+    
+    func loadTolerance() {
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let managedContext = appDelegate.persistentContainer.viewContext
+        var toleranceSelected = [NSManagedObject]()
+        
+        let request = NSFetchRequest<LinearTolerance>(entityName: "LinearTolerance")
+        
+        do {
+            let resultTolerance = try managedContext.fetch(request)
+            toleranceSelected = resultTolerance
+        } catch {
+            print("Error")
+        }
+        
+        let result = toleranceSelected.first as! LinearTolerance
+        for tolerance in ChosenTolerance.allCases {
+            if tolerance.rawValue == result.tolerance {
+                setToleranceInModel(with: tolerance)
+            }
+        }
+        
     }
     
     func setToleranceInModel(with tolerance: ChosenTolerance) {

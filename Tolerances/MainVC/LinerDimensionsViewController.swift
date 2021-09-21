@@ -37,6 +37,7 @@ class LinerDimensionsViewController: UITableViewController, UISearchBarDelegate 
         super.viewDidLoad()
 
         let data = ObjectDataSource(vc: self)
+        data.loadTolerance()
         dataSourceAndDelegate = data
         tableView.dataSource = dataSourceAndDelegate
         tableView.delegate = dataSourceAndDelegate
@@ -69,6 +70,8 @@ class LinerDimensionsViewController: UITableViewController, UISearchBarDelegate 
         tolerancePickerView.modalPresentationStyle = .custom
         tolerancePickerView.transitioningDelegate = self
         tolerancePickerView.delegate = self
+        tolerancePickerView.dataFromModel = dataSourceAndDelegate?.data
+        tolerancePickerView.dataFromModel.setBuffers()
         
         if let sendToleranceState = stateToleranceForInitPickerViewController {
             tolerancePickerView.setStateTolerance(chosen: sendToleranceState)

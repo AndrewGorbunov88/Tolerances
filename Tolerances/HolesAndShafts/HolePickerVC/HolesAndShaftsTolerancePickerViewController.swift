@@ -12,7 +12,6 @@ class HolesAndShaftsTolerancePickerViewController: UIViewController {
     private var state: Fields?
     
     private var stateHoleField: Fields?
-//    private var stateHoleField: HoleFields = .h
     private var stateDimension: Int?
     
     weak var holeAndShaftModel: DataHolesAndShafts!

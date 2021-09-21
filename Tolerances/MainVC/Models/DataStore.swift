@@ -11,6 +11,9 @@ class DataStore {
     
     private var searchState = false
     
+    private var bufferNameField = ""
+    private var bufferChoseFieldState: ChosenTolerance?
+    
     private var stateTolerance: ChosenTolerance? {
         didSet {
             installRangeAndToleranceInDimensions()
@@ -47,7 +50,12 @@ class DataStore {
                                                      (name: "Св. 3150 до 4000 мм", range: nil, tolerance: nil, unit: nil),
                                                      (name: "Св. 4000 до 5000 мм", range: nil, tolerance: nil, unit: nil),
                                                      (name: "Св. 5000 до 6300 мм", range: nil, tolerance: nil, unit: nil),
-                                                     (name: "Св. 6300 до 8000 мм", range: nil, tolerance: nil, unit: nil)]
+                                                     (name: "Св. 6300 до 8000 мм", range: nil, tolerance: nil, unit: nil)] {
+        didSet {
+            let toleranceInfo = ["didToleranceChange": stateTolerance]
+            NotificationCenter.default.post(name: .didToleranceChange, object: nil, userInfo: toleranceInfo as [AnyHashable : Any])
+        }
+    }
     
     private var sortedDimensions: [(name: String,
                                    range: ClosedRange<Double>?,
@@ -592,8 +600,8 @@ class DataStore {
         }
     }
     
-    init(with tolerance: ChosenTolerance) {
-        self.stateTolerance = tolerance
+    init() {
+//        self.stateTolerance = tolerance
         
         setupDimensions()
     }
@@ -665,6 +673,19 @@ class DataStore {
         
         installRangeAndToleranceInDimensions()
         
+    }
+    
+    func setBuffers() {
+        self.bufferChoseFieldState = self.stateTolerance
+    }
+    
+    func setAllDimensionsFromBuffers() {
+        self.stateTolerance = self.bufferChoseFieldState
+
+    }
+    
+    func clearBuffers() {
+        self.bufferChoseFieldState = nil
     }
     
     private func installRangeAndToleranceInDimensions() {

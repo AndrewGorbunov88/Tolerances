@@ -20,6 +20,7 @@
 		896C6626265A5D99004D0DE7 /* HolesSizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896C6625265A5D99004D0DE7 /* HolesSizes.swift */; };
 		898A648B264404EB00488AF0 /* HalfSizePresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898A648A264404EB00488AF0 /* HalfSizePresentationController.swift */; };
 		898A648D2644077A00488AF0 /* PickerViewDataSourceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898A648C2644077A00488AF0 /* PickerViewDataSourceDelegate.swift */; };
+		899013B426EF8D0300503838 /* Tolerances CoreData Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 899013B226EF8D0300503838 /* Tolerances CoreData Model.xcdatamodeld */; };
 		899205A926441A4A00371818 /* ColorSchemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899205A826441A4A00371818 /* ColorSchemes.swift */; };
 		899205AB2644528600371818 /* ShowTolerance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899205AA2644528600371818 /* ShowTolerance.swift */; };
 		89A86189267927C500165ED0 /* ShaftsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A86188267927C500165ED0 /* ShaftsViewController.swift */; };
@@ -63,6 +64,7 @@
 		896C6625265A5D99004D0DE7 /* HolesSizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolesSizes.swift; sourceTree = "<group>"; };
 		898A648A264404EB00488AF0 /* HalfSizePresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfSizePresentationController.swift; sourceTree = "<group>"; };
 		898A648C2644077A00488AF0 /* PickerViewDataSourceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewDataSourceDelegate.swift; sourceTree = "<group>"; };
+		899013B326EF8D0300503838 /* Tolerances CoreData Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Tolerances CoreData Model.xcdatamodel"; sourceTree = "<group>"; };
 		899205A826441A4A00371818 /* ColorSchemes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSchemes.swift; sourceTree = "<group>"; };
 		899205AA2644528600371818 /* ShowTolerance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowTolerance.swift; sourceTree = "<group>"; };
 		89A86188267927C500165ED0 /* ShaftsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShaftsViewController.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				892B8FDE261F5F7B00D27104 /* AppDelegate.swift */,
+				899013B226EF8D0300503838 /* Tolerances CoreData Model.xcdatamodeld */,
 				892B8FE0261F5F7B00D27104 /* SceneDelegate.swift */,
 				892B8FE4261F5F7B00D27104 /* Main.storyboard */,
 				899205AD26446D2400371818 /* MainVC */,
@@ -325,6 +328,7 @@
 				898A648D2644077A00488AF0 /* PickerViewDataSourceDelegate.swift in Sources */,
 				892B8FE3261F5F7B00D27104 /* LinerDimensionsViewController.swift in Sources */,
 				899205AB2644528600371818 /* ShowTolerance.swift in Sources */,
+				899013B426EF8D0300503838 /* Tolerances CoreData Model.xcdatamodeld in Sources */,
 				89F618E3267DD86C00B14495 /* FirstCell.swift in Sources */,
 				899205A926441A4A00371818 /* ColorSchemes.swift in Sources */,
 				89A86189267927C500165ED0 /* ShaftsViewController.swift in Sources */,
@@ -612,6 +616,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		899013B226EF8D0300503838 /* Tolerances CoreData Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				899013B326EF8D0300503838 /* Tolerances CoreData Model.xcdatamodel */,
+			);
+			currentVersion = 899013B326EF8D0300503838 /* Tolerances CoreData Model.xcdatamodel */;
+			path = "Tolerances CoreData Model.xcdatamodeld";
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 892B8FD3261F5F7B00D27104 /* Project object */;
 }
