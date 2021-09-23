@@ -72,8 +72,6 @@ class TolerancePickerViewController: UIViewController {
     }
     
     @IBAction func selectButtonAction(_ sender: Any) {
-        
-        print("\(stateTolerance!.rawValue)")
 
         saveToleranceInData()
         
@@ -85,7 +83,7 @@ class TolerancePickerViewController: UIViewController {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         
-        let request = NSFetchRequest<LinearTolerance>(entityName: "LinearTolerance")
+        let request = NSFetchRequest<MemoryTolerance>(entityName: "MemoryTolerance")
         
         do {
             let resultArray = try context.fetch(request)

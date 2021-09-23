@@ -5,10 +5,17 @@
 //  Created by Андрей Горбунов on 23.05.2021.
 //
 
+import UIKit
 import Foundation
+import CoreData
 
 protocol Fields {
     
+}
+
+enum FieldState {
+    case hole
+    case shaft
 }
 
 enum HoleFields: String, CaseIterable, Fields {
@@ -293,8 +300,9 @@ class DataHolesAndShafts {
         }
     }
         
-    init(choseFieldState: Fields) {
-        self.choseFieldState = choseFieldState
+    init(choseFieldState: FieldState) {
+//        self.choseFieldState = choseFieldState
+        loadFromMemory(field: choseFieldState)
         
         if self.choseFieldState is HoleFields {
             let holes = HolesSizes()
@@ -312,6 +320,56 @@ class DataHolesAndShafts {
     }
     
     //MARK: - Methods
+    
+    //TODO: - Здесь реализовать инициализацию модели из CoreData
+    //возможно это лучше написать в инициализации ViewController
+    //еще идея, можно здесь в модели написать enum с состояниями отверстие или вал инициализируется
+    //и в зависимости от этого инициализировать self.choseFieldState
+    
+    private func loadFromMemory(field: FieldState) {
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let managedContext = appDelegate.persistentContainer.viewContext
+        var toleranceSelected = [NSManagedObject]()
+        
+        let request = NSFetchRequest<MemoryTolerance>(entityName: "MemoryTolerance")
+        
+        do {
+            let resultTolerance = try managedContext.fetch(request)
+            toleranceSelected = resultTolerance
+        } catch {
+            print("Error")
+        }
+        
+        let result = toleranceSelected.first as! MemoryTolerance
+        
+        if field == FieldState.hole {
+            for tolerance in HoleFields.allCases {
+                if tolerance.rawValue == result.holeField {
+                    self.choseFieldState = tolerance
+                    self.choseDimensionState = Int(result.holeState)
+//                    print("Загружено из памяти - \(self.choseFieldState) \(self.choseDimensionState)")
+                }
+            }
+        }
+        
+        if field == FieldState.shaft {
+            ShaftFields.allCases.forEach { tolerance in
+                if tolerance.rawValue == result.shaftField {
+                    self.choseFieldState = tolerance
+                    self.choseDimensionState = Int(result.shaftState)
+//                    print("Загружено из памяти - \(self.choseFieldState) \(self.choseDimensionState)")
+                }
+            }
+        }
+        
+//        for tolerance in ChosenTolerance.allCases {
+//            if tolerance.rawValue == result.tolerance {
+//                setToleranceInModel(with: tolerance)
+//            }
+//        }
+        
+    }
     
     private func installDimensionHoles() {
         
@@ -386,9 +444,11 @@ class DataHolesAndShafts {
         if (fieldOfToleranceArray.count - 1) > row {
             dimensionsHolesOrShafts = fieldOfToleranceArray[row].field
             nameDimension = fieldOfToleranceArray[row].name
+            choseDimensionState = row
         } else {
             dimensionsHolesOrShafts = fieldOfToleranceArray.last!.field
             nameDimension = fieldOfToleranceArray.last!.name
+            choseDimensionState = fieldOfToleranceArray.count - 1
         }
         
     }

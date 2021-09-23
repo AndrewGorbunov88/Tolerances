@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         let context = self.persistentContainer.viewContext
-        let linearRequest = NSFetchRequest<LinearTolerance>(entityName: "LinearTolerance")
+        let linearRequest = NSFetchRequest<MemoryTolerance>(entityName: "MemoryTolerance")
         
         do {
             var tolerancesArray = try context.fetch(linearRequest)
@@ -37,11 +37,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // MARK: - Methods
     
-    func createLinearEntity() -> LinearTolerance {
-        let linearTolerance = LinearTolerance(context: self.persistentContainer.viewContext)
-        linearTolerance.tolerance = ChosenTolerance.it12.rawValue
+    func createLinearEntity() -> MemoryTolerance {
+        let memoryTolerance = MemoryTolerance(context: self.persistentContainer.viewContext)
+        memoryTolerance.tolerance = ChosenTolerance.it12.rawValue
         
-        return linearTolerance
+        memoryTolerance.holeField = HoleFields.h.rawValue
+        memoryTolerance.holeState = 0
+        
+        memoryTolerance.shaftField = ShaftFields.h.rawValue
+        memoryTolerance.shaftState = 0
+        
+        return memoryTolerance
     }
 
     // MARK: UISceneSession Lifecycle

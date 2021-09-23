@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class HolesAndShaftsTolerancePickerViewController: UIViewController {
     
@@ -72,8 +73,37 @@ class HolesAndShaftsTolerancePickerViewController: UIViewController {
     }
     
     @IBAction func selectHolePickerViewAction(_ sender: Any) {
-        
+        self.saveHoleOrShaftInData()
         dismiss(animated: true, completion: nil)
+    }
+    
+    private func saveHoleOrShaftInData() {
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        
+        let request = NSFetchRequest<MemoryTolerance>(entityName: "MemoryTolerance")
+        
+        do {
+            let resultArray = try context.fetch(request)
+            
+            if state is HoleFields {
+                
+                resultArray.first?.holeField = (holeAndShaftModel.getChooseState as! HoleFields).rawValue
+                resultArray.first?.holeState = Int16(holeAndShaftModel.getDimensionState)
+                
+            }
+            
+            if state is ShaftFields {
+                resultArray.first?.shaftField = (holeAndShaftModel.getChooseState as! ShaftFields).rawValue
+                resultArray.first?.shaftState = Int16(holeAndShaftModel.getDimensionState)
+            }
+            
+            try context.save()
+        } catch {
+            print("Error")
+        }
+        
     }
     
     private func setDefaultRowHoleFieldOfPickerView() {

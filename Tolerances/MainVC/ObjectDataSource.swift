@@ -27,7 +27,7 @@ class ObjectDataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
         let managedContext = appDelegate.persistentContainer.viewContext
         var toleranceSelected = [NSManagedObject]()
         
-        let request = NSFetchRequest<LinearTolerance>(entityName: "LinearTolerance")
+        let request = NSFetchRequest<MemoryTolerance>(entityName: "MemoryTolerance")
         
         do {
             let resultTolerance = try managedContext.fetch(request)
@@ -36,7 +36,7 @@ class ObjectDataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
             print("Error")
         }
         
-        let result = toleranceSelected.first as! LinearTolerance
+        let result = toleranceSelected.first as! MemoryTolerance
         for tolerance in ChosenTolerance.allCases {
             if tolerance.rawValue == result.tolerance {
                 setToleranceInModel(with: tolerance)

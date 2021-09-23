@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20E241" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="LinearTolerance" representedClassName="LinearTolerance" syncable="YES" codeGenerationType="class">
-        <attribute name="tolerance" attributeType="String"/>
+    <entity name="MemoryTolerance" representedClassName="MemoryTolerance" syncable="YES" codeGenerationType="class">
+        <attribute name="holeField" optional="YES" attributeType="String"/>
+        <attribute name="holeState" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="shaftField" optional="YES" attributeType="String"/>
+        <attribute name="shaftState" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="tolerance" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="LinearTolerance" positionX="-63" positionY="-18" width="128" height="58"/>
+        <element name="MemoryTolerance" positionX="-63" positionY="-18" width="128" height="118"/>
     </elements>
 </model>
