@@ -9,57 +9,6 @@ import UIKit
 import Foundation
 import CoreData
 
-protocol Fields {
-    
-}
-
-enum FieldState {
-    case hole
-    case shaft
-}
-
-enum HoleFields: String, CaseIterable, Fields {
-    case a = "A"
-    case b = "B"
-    case c = "C"
-    case d = "D"
-    case e = "E"
-    case f = "F"
-    case g = "G"
-    case h = "H"
-    case js = "JS"
-    case k = "K"
-    case m = "M"
-    case n = "N"
-    case p = "P"
-    case r = "R"
-    case s = "S"
-    case t = "T"
-    case u = "U"
-}
-
-enum ShaftFields: String, CaseIterable, Fields {
-    case a = "a"
-    case b = "b"
-    case c = "c"
-    case d = "d"
-    case e = "e"
-    case f = "f"
-    case g = "g"
-    case h = "h"
-    case js = "js"
-    case k = "k"
-    case m = "m"
-    case n = "n"
-    case p = "p"
-    case r = "r"
-    case s = "s"
-    case t = "t"
-    case u = "u"
-    case x = "x"
-    case z = "z"
-}
-
 class DataHolesAndShafts {
     
     private var choseFieldState: Fields?
@@ -321,11 +270,6 @@ class DataHolesAndShafts {
     
     //MARK: - Methods
     
-    //TODO: - Здесь реализовать инициализацию модели из CoreData
-    //возможно это лучше написать в инициализации ViewController
-    //еще идея, можно здесь в модели написать enum с состояниями отверстие или вал инициализируется
-    //и в зависимости от этого инициализировать self.choseFieldState
-    
     private func loadFromMemory(field: FieldState) {
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -348,7 +292,6 @@ class DataHolesAndShafts {
                 if tolerance.rawValue == result.holeField {
                     self.choseFieldState = tolerance
                     self.choseDimensionState = Int(result.holeState)
-//                    print("Загружено из памяти - \(self.choseFieldState) \(self.choseDimensionState)")
                 }
             }
         }
@@ -358,16 +301,9 @@ class DataHolesAndShafts {
                 if tolerance.rawValue == result.shaftField {
                     self.choseFieldState = tolerance
                     self.choseDimensionState = Int(result.shaftState)
-//                    print("Загружено из памяти - \(self.choseFieldState) \(self.choseDimensionState)")
                 }
             }
         }
-        
-//        for tolerance in ChosenTolerance.allCases {
-//            if tolerance.rawValue == result.tolerance {
-//                setToleranceInModel(with: tolerance)
-//            }
-//        }
         
     }
     

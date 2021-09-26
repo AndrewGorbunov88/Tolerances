@@ -40,7 +40,6 @@ class ShowToleranceTests: XCTestCase {
         let checkToleranceDivided = "± 0.05 mm"
         
         showTolerance.display(tolerance: testToleranceValue, symbol: testSymbol, presenter: mockVC)
-//        mockVC.present(mockVC.testAlert, animated: true, completion: nil)
         
         let alertTitle = (mockVC.testAlert.value(forKey: "attributedTitle") as? NSAttributedString)?.string
         

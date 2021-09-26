@@ -43,7 +43,7 @@ class DataStore {
                                                      (name: "Св. 630 до 800 мм", range: nil, tolerance: nil, unit: nil),
                                                      (name: "Св. 800 до 1000 мм", range: nil, tolerance: nil, unit: nil),
                                                      (name: "Св. 1000 до 1250 мм", range: nil, tolerance: nil, unit: nil),
-                                                     (name: "Св. 1250 до 1600мм", range: nil, tolerance: nil, unit: nil),
+                                                     (name: "Св. 1250 до 1600 мм", range: nil, tolerance: nil, unit: nil),
                                                      (name: "Св. 1600 до 2000 мм", range: nil, tolerance: nil, unit: nil),
                                                      (name: "Св. 2000 до 2500 мм", range: nil, tolerance: nil, unit: nil),
                                                      (name: "Св. 2500 до 3150 мм", range: nil, tolerance: nil, unit: nil),
@@ -601,8 +601,6 @@ class DataStore {
     }
     
     init() {
-//        self.stateTolerance = tolerance
-        
         setupDimensions()
     }
     

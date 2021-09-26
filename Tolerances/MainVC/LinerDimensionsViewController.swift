@@ -57,7 +57,7 @@ class LinerDimensionsViewController: UITableViewController, UISearchBarDelegate 
         
         self.tableView.keyboardDismissMode = .onDrag
         
-        self.tableView.setContentOffset(CGPoint(x: 0, y: 56), animated: false)
+        self.tableView.setContentOffset(CGPoint(x: 0, y: 78), animated: false)
         
     }
     
@@ -128,25 +128,3 @@ protocol UserSearchingDimension {
     func tolerance(in size: String)
 }
 
-enum ChosenTolerance: String, CaseIterable {
-    case it01 = "IT01"
-    case it0 = "IT0"
-    case it1 = "IT1"
-    case it2 = "IT2"
-    case it3 = "IT3"
-    case it4 = "IT4"
-    case it5 = "IT5"
-    case it6 = "IT6"
-    case it7 = "IT7"
-    case it8 = "IT8"
-    case it9 = "IT9"
-    case it10 = "IT10"
-    case it11 = "IT11"
-    case it12 = "IT12"
-    case it13 = "IT13"
-    case it14 = "IT14"
-    case it15 = "IT15"
-    case it16 = "IT16"
-    case it17 = "IT17"
-    case it18 = "IT18"
-}
