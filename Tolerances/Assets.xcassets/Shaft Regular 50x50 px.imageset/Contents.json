@@ -5,12 +5,12 @@
       "scale" : "1x"
     },
     {
-      "filename" : "Hole Regular 46x46 2x.png",
+      "filename" : "Shaft Regular 50x50 px.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Hole Regular 69x69 3x.png",
+      "filename" : "Shaft Regular 75x75 px.png",
       "idiom" : "universal",
       "scale" : "3x"
     },
@@ -20,13 +20,13 @@
       "scale" : "1x"
     },
     {
-      "filename" : "Hole Compact 34x34 2x.png",
+      "filename" : "Shaft Compact 36x36 px.png",
       "height-class" : "compact",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Hole Compact 51x51 3x.png",
+      "filename" : "Shaft Compact 54x54 px.png",
       "height-class" : "compact",
       "idiom" : "universal",
       "scale" : "3x"
@@ -35,8 +35,5 @@
   "info" : {
     "author" : "xcode",
     "version" : 1
-  },
-  "properties" : {
-    "preserves-vector-representation" : true
   }
 }

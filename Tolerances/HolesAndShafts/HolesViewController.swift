@@ -45,7 +45,7 @@ class HolesViewController: UITableViewController, HolesOrShaftsVC {
         
         self.tableView.keyboardDismissMode = .onDrag
         
-        self.tableView.setContentOffset(CGPoint(x: 0, y: 56), animated: false)
+        self.tableView.setContentOffset(CGPoint(x: 0, y: 78), animated: false)
 
     }
 

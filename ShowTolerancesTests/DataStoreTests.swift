@@ -187,9 +187,6 @@ class DataStoreTests: XCTestCase {
         
     }
     
-    
-    //TODO: - Тест NotificationCenter у свойства stateTolerance
-    
     func test_stateToleranceDidChanged() {
         
         createToleranceDidChangeObserver()
