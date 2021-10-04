@@ -259,7 +259,7 @@
         <scene sceneID="gfT-LF-6L0">
             <objects>
                 <navigationController id="S8V-Ur-8QA" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Размеры" image="Linear Regular 62x62 px" id="EdT-Lp-X11"/>
+                    <tabBarItem key="tabBarItem" title="Размеры" image="Linear Regular 62x62 px" landscapeImage="Linear Regular 62x62 px" id="EdT-Lp-X11"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ErJ-5s-RtG">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

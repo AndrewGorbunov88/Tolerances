@@ -26,6 +26,7 @@
 		899205AB2644528600371818 /* ShowTolerance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899205AA2644528600371818 /* ShowTolerance.swift */; };
 		89A86189267927C500165ED0 /* ShaftsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A86188267927C500165ED0 /* ShaftsViewController.swift */; };
 		89A8618B2679F2D000165ED0 /* ShaftsSizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A8618A2679F2D000165ED0 /* ShaftsSizes.swift */; };
+		89ABA74C2704B8390008ACA5 /* DataHolesAndShaftsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89ABA74B2704B8390008ACA5 /* DataHolesAndShaftsTests.swift */; };
 		89B4C6002645C06E0014ED4A /* TolerancesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B4C5FF2645C06E0014ED4A /* TolerancesTests.swift */; };
 		89BB0BD626234CC0007C8381 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BB0BD526234CC0007C8381 /* ItemCell.swift */; };
 		89BE841026517B06001A7999 /* DataStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BE840F26517B06001A7999 /* DataStoreTests.swift */; };
@@ -71,6 +72,7 @@
 		899205AA2644528600371818 /* ShowTolerance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowTolerance.swift; sourceTree = "<group>"; };
 		89A86188267927C500165ED0 /* ShaftsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShaftsViewController.swift; sourceTree = "<group>"; };
 		89A8618A2679F2D000165ED0 /* ShaftsSizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShaftsSizes.swift; sourceTree = "<group>"; };
+		89ABA74B2704B8390008ACA5 /* DataHolesAndShaftsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHolesAndShaftsTests.swift; sourceTree = "<group>"; };
 		89B4C5F32645C0490014ED4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		89B4C5FD2645C06E0014ED4A /* TolerancesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TolerancesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		89B4C5FF2645C06E0014ED4A /* TolerancesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TolerancesTests.swift; sourceTree = "<group>"; };
@@ -109,7 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				892B8FDD261F5F7B00D27104 /* Tolerances */,
-				89B4C5F02645C0490014ED4A /* ShowTolerancesTests */,
+				89B4C5F02645C0490014ED4A /* ModelTests */,
 				89B4C5FE2645C06E0014ED4A /* TolerancesTests */,
 				892B8FDC261F5F7B00D27104 /* Products */,
 			);
@@ -198,14 +200,15 @@
 			path = TolerancePickerVC;
 			sourceTree = "<group>";
 		};
-		89B4C5F02645C0490014ED4A /* ShowTolerancesTests */ = {
+		89B4C5F02645C0490014ED4A /* ModelTests */ = {
 			isa = PBXGroup;
 			children = (
 				8934DCCD2645CAAF00A7B96F /* ShowToleranceTests.swift */,
 				89BE840F26517B06001A7999 /* DataStoreTests.swift */,
+				89ABA74B2704B8390008ACA5 /* DataHolesAndShaftsTests.swift */,
 				89B4C5F32645C0490014ED4A /* Info.plist */,
 			);
-			path = ShowTolerancesTests;
+			path = ModelTests;
 			sourceTree = "<group>";
 		};
 		89B4C5FE2645C06E0014ED4A /* TolerancesTests */ = {
@@ -357,6 +360,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89ABA74C2704B8390008ACA5 /* DataHolesAndShaftsTests.swift in Sources */,
 				8934DCCE2645CAAF00A7B96F /* ShowToleranceTests.swift in Sources */,
 				89B4C6002645C06E0014ED4A /* TolerancesTests.swift in Sources */,
 				89BE841026517B06001A7999 /* DataStoreTests.swift in Sources */,

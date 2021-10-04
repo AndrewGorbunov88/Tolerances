@@ -237,7 +237,7 @@ class DataHolesAndShafts {
         }
     }
     
-    var getChooseState: Fields {
+    var getChoseState: Fields {
         get {
             choseFieldState!
         }
@@ -250,7 +250,6 @@ class DataHolesAndShafts {
     }
         
     init(choseFieldState: FieldState) {
-//        self.choseFieldState = choseFieldState
         loadFromMemory(field: choseFieldState)
         
         if self.choseFieldState is HoleFields {

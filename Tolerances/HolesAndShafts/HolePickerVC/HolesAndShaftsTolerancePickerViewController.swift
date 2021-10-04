@@ -43,12 +43,12 @@ class HolesAndShaftsTolerancePickerViewController: UIViewController {
         super.viewDidLoad()
 
         if state is HoleFields {
-            self.stateHoleField = holeAndShaftModel.getChooseState as! HoleFields
+            self.stateHoleField = holeAndShaftModel.getChoseState as! HoleFields
             self.stateDimension = holeAndShaftModel.getDimensionState
         }
         
         if state is ShaftFields {
-            self.stateHoleField = holeAndShaftModel.getChooseState as! ShaftFields
+            self.stateHoleField = holeAndShaftModel.getChoseState as! ShaftFields
             self.stateDimension = holeAndShaftModel.getDimensionState
         }
         
@@ -89,13 +89,13 @@ class HolesAndShaftsTolerancePickerViewController: UIViewController {
             
             if state is HoleFields {
                 
-                resultArray.first?.holeField = (holeAndShaftModel.getChooseState as! HoleFields).rawValue
+                resultArray.first?.holeField = (holeAndShaftModel.getChoseState as! HoleFields).rawValue
                 resultArray.first?.holeState = Int16(holeAndShaftModel.getDimensionState)
                 
             }
             
             if state is ShaftFields {
-                resultArray.first?.shaftField = (holeAndShaftModel.getChooseState as! ShaftFields).rawValue
+                resultArray.first?.shaftField = (holeAndShaftModel.getChoseState as! ShaftFields).rawValue
                 resultArray.first?.shaftState = Int16(holeAndShaftModel.getDimensionState)
             }
             
