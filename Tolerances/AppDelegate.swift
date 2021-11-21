@@ -30,12 +30,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("Error")
         }
         
+        let fitRequest = NSFetchRequest<MemoryFitTolerance>(entityName: "MemoryFitTolerance")
+        
+        do {
+            var fitTolerancesArray = try context.fetch(fitRequest)
+            if fitTolerancesArray.isEmpty {
+                fitTolerancesArray.append(contentsOf: [createFitEntity()])
+                try context.save()
+            }
+        } catch {
+            print("Error")
+        }
+        
         AppDelegate.colorScheme.createColorModel()
         
         return true
     }
     
     // MARK: - Methods
+    
+    func getFromContext() {
+        
+    }
     
     func createLinearEntity() -> MemoryTolerance {
         let memoryTolerance = MemoryTolerance(context: self.persistentContainer.viewContext)
@@ -48,6 +64,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         memoryTolerance.shaftState = 0
         
         return memoryTolerance
+    }
+    
+    func createFitEntity() -> MemoryFitTolerance {
+        let fitMemoryTolerance = MemoryFitTolerance(context: self.persistentContainer.viewContext)
+        fitMemoryTolerance.fitHoleField = HoleFields.h.rawValue
+        fitMemoryTolerance.fitHoleState = 7
+        
+        fitMemoryTolerance.fitShaftField = ShaftFields.g.rawValue
+        fitMemoryTolerance.fitShaftState = 2
+        
+        return fitMemoryTolerance
     }
 
     // MARK: UISceneSession Lifecycle

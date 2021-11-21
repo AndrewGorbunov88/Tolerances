@@ -729,6 +729,10 @@ extension DataStore: UserSearchingDimension {
             
         }
         
+        if sortedDimensions.count>1 {
+            sortedDimensions.removeLast()
+        }
+        
     }
     
     

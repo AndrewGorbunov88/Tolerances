@@ -19,7 +19,7 @@ class ShaftsViewController: UITableViewController, HolesOrShaftsVC {
     var shaftDataSource: HolesOrShaftsVCDataSource?
     var searchShaftController: SearchController?
 
-    var dataHolesModel = DataHolesAndShafts(choseFieldState: FieldState.shaft)
+    var dataHolesModel = DataHolesAndShafts(choseFieldState: FieldState.shaft, forFitting: false)
 
     override func viewDidLoad() {
         super.viewDidLoad()

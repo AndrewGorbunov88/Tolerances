@@ -28,6 +28,7 @@
 		89A8618B2679F2D000165ED0 /* ShaftsSizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A8618A2679F2D000165ED0 /* ShaftsSizes.swift */; };
 		89ABA74C2704B8390008ACA5 /* DataHolesAndShaftsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89ABA74B2704B8390008ACA5 /* DataHolesAndShaftsTests.swift */; };
 		89B4C6002645C06E0014ED4A /* TolerancesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B4C5FF2645C06E0014ED4A /* TolerancesTests.swift */; };
+		89B72601271DC01B00C4DC38 /* FitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B72600271DC01B00C4DC38 /* FitViewController.swift */; };
 		89BB0BD626234CC0007C8381 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BB0BD526234CC0007C8381 /* ItemCell.swift */; };
 		89BE841026517B06001A7999 /* DataStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BE840F26517B06001A7999 /* DataStoreTests.swift */; };
 		89CABAF52665560B00A13367 /* HolesAndShaftsTolerancePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CABAF42665560B00A13367 /* HolesAndShaftsTolerancePickerViewController.swift */; };
@@ -37,6 +38,7 @@
 		89EBEE95265D593A00A0E20F /* HoleOrShaftCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EBEE94265D593A00A0E20F /* HoleOrShaftCell.swift */; };
 		89EBEE97265D5B2500A0E20F /* HolesOrShaftsVCDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EBEE96265D5B2500A0E20F /* HolesOrShaftsVCDataSource.swift */; };
 		89F618E3267DD86C00B14495 /* FirstCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F618E2267DD86C00B14495 /* FirstCell.swift */; };
+		89FCD4132735A6A400E62104 /* FittingBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FCD4122735A6A400E62104 /* FittingBrain.swift */; };
 		89FF41582694AE3200715529 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FF41572694AE3200715529 /* SearchController.swift */; };
 /* End PBXBuildFile section */
 
@@ -77,6 +79,7 @@
 		89B4C5FD2645C06E0014ED4A /* TolerancesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TolerancesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		89B4C5FF2645C06E0014ED4A /* TolerancesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TolerancesTests.swift; sourceTree = "<group>"; };
 		89B4C6012645C06E0014ED4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		89B72600271DC01B00C4DC38 /* FitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitViewController.swift; sourceTree = "<group>"; };
 		89BB0BD526234CC0007C8381 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		89BE840F26517B06001A7999 /* DataStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStoreTests.swift; sourceTree = "<group>"; };
 		89CABAF42665560B00A13367 /* HolesAndShaftsTolerancePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolesAndShaftsTolerancePickerViewController.swift; sourceTree = "<group>"; };
@@ -86,6 +89,7 @@
 		89EBEE94265D593A00A0E20F /* HoleOrShaftCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoleOrShaftCell.swift; sourceTree = "<group>"; };
 		89EBEE96265D5B2500A0E20F /* HolesOrShaftsVCDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolesOrShaftsVCDataSource.swift; sourceTree = "<group>"; };
 		89F618E2267DD86C00B14495 /* FirstCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstCell.swift; sourceTree = "<group>"; };
+		89FCD4122735A6A400E62104 /* FittingBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FittingBrain.swift; sourceTree = "<group>"; };
 		89FF41572694AE3200715529 /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -133,6 +137,7 @@
 				899013B226EF8D0300503838 /* Tolerances CoreData Model.xcdatamodeld */,
 				892B8FE0261F5F7B00D27104 /* SceneDelegate.swift */,
 				892B8FE4261F5F7B00D27104 /* Main.storyboard */,
+				89B72602271DC02900C4DC38 /* Fitting */,
 				899205AD26446D2400371818 /* MainVC */,
 				896C6623265A45F4004D0DE7 /* HolesAndShafts */,
 				892B8FE7261F5F7C00D27104 /* Assets.xcassets */,
@@ -218,6 +223,15 @@
 				89B4C6012645C06E0014ED4A /* Info.plist */,
 			);
 			path = TolerancesTests;
+			sourceTree = "<group>";
+		};
+		89B72602271DC02900C4DC38 /* Fitting */ = {
+			isa = PBXGroup;
+			children = (
+				89B72600271DC01B00C4DC38 /* FitViewController.swift */,
+				89FCD4122735A6A400E62104 /* FittingBrain.swift */,
+			);
+			path = Fitting;
 			sourceTree = "<group>";
 		};
 		89CABAF62666A64900A13367 /* HolePickerVC */ = {
@@ -329,6 +343,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89FCD4132735A6A400E62104 /* FittingBrain.swift in Sources */,
+				89B72601271DC01B00C4DC38 /* FitViewController.swift in Sources */,
 				89EBEE95265D593A00A0E20F /* HoleOrShaftCell.swift in Sources */,
 				89EBEE97265D5B2500A0E20F /* HolesOrShaftsVCDataSource.swift in Sources */,
 				898A648D2644077A00488AF0 /* PickerViewDataSourceDelegate.swift in Sources */,

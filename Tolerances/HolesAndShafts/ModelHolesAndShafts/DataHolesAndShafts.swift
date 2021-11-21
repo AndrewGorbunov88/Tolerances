@@ -20,7 +20,9 @@ class DataHolesAndShafts {
     private var bufferChoseFieldState: Fields?
     private var bufferChoseDimensionState: Int?
     private var searchState = false
+    private var fittingState: Bool
     
+    //TODO: - Размеры сделать через Dictionary [enumCase : "До 3 мм", ...]
     private let nameSize = ["До 3 мм",
                             "Св. 3 до 6 мм",
                             "Св. 6 до 10 мм",
@@ -36,6 +38,7 @@ class DataHolesAndShafts {
                             "Св. 400 до 500 мм"]
     
     //MARK: - Имена полей для отверстий и валов
+    
     private let nameABCHolesAndShaftsSizes = ["До 3 мм",
                                               "Св. 3 до 6 мм",
                                               "Св. 6 до 10 мм",
@@ -249,7 +252,10 @@ class DataHolesAndShafts {
         }
     }
         
-    init(choseFieldState: FieldState) {
+    init(choseFieldState: FieldState, forFitting fit: Bool) {
+        
+        self.fittingState = fit
+        
         loadFromMemory(field: choseFieldState)
         
         if self.choseFieldState is HoleFields {
@@ -275,34 +281,72 @@ class DataHolesAndShafts {
         let managedContext = appDelegate.persistentContainer.viewContext
         var toleranceSelected = [NSManagedObject]()
         
-        let request = NSFetchRequest<MemoryTolerance>(entityName: "MemoryTolerance")
         
-        do {
-            let resultTolerance = try managedContext.fetch(request)
-            toleranceSelected = resultTolerance
-        } catch {
-            print("Error")
-        }
-        
-        let result = toleranceSelected.first as! MemoryTolerance
-        
-        if field == FieldState.hole {
-            for tolerance in HoleFields.allCases {
-                if tolerance.rawValue == result.holeField {
-                    self.choseFieldState = tolerance
-                    self.choseDimensionState = Int(result.holeState)
+        //TODO: - сделать DRY
+        if fittingState {
+            
+            let request = NSFetchRequest<MemoryFitTolerance>(entityName: "MemoryFitTolerance")
+            
+            do {
+                let resultTolerance = try managedContext.fetch(request)
+                toleranceSelected = resultTolerance
+            } catch {
+                print("Error")
+            }
+            
+            let result = toleranceSelected.first as! MemoryFitTolerance
+            
+            if field == FieldState.hole {
+                for tolerance in HoleFields.allCases {
+                    if tolerance.rawValue == result.fitHoleField {
+                        self.choseFieldState = tolerance
+                        self.choseDimensionState = Int(result.fitHoleState)
+                    }
                 }
             }
-        }
-        
-        if field == FieldState.shaft {
-            ShaftFields.allCases.forEach { tolerance in
-                if tolerance.rawValue == result.shaftField {
-                    self.choseFieldState = tolerance
-                    self.choseDimensionState = Int(result.shaftState)
+            
+            if field == FieldState.shaft {
+                ShaftFields.allCases.forEach { tolerance in
+                    if tolerance.rawValue == result.fitShaftField {
+                        self.choseFieldState = tolerance
+                        self.choseDimensionState = Int(result.fitShaftState)
+                    }
                 }
             }
+            
+        } else {
+            
+            let request = NSFetchRequest<MemoryTolerance>(entityName: "MemoryTolerance")
+            
+            do {
+                let resultTolerance = try managedContext.fetch(request)
+                toleranceSelected = resultTolerance
+            } catch {
+                print("Error")
+            }
+            
+            let result = toleranceSelected.first as! MemoryTolerance
+            
+            if field == FieldState.hole {
+                for tolerance in HoleFields.allCases {
+                    if tolerance.rawValue == result.holeField {
+                        self.choseFieldState = tolerance
+                        self.choseDimensionState = Int(result.holeState)
+                    }
+                }
+            }
+            
+            if field == FieldState.shaft {
+                ShaftFields.allCases.forEach { tolerance in
+                    if tolerance.rawValue == result.shaftField {
+                        self.choseFieldState = tolerance
+                        self.choseDimensionState = Int(result.shaftState)
+                    }
+                }
+            }
+            
         }
+        
         
     }
     
@@ -611,10 +655,16 @@ extension DataHolesAndShafts: UserSearchingDimension {
             
             if sizeFromString.count > 0 && dimensionsHolesOrShafts[dimension].range?.contains(dimensionValue!) == true {
                 sortedHolesOrShaftsDimensions.append(dimensionsHolesOrShafts[dimension])
-                sortedNameSizes.append(buferNameSizes[dimension])
+                if self.fittingState == false {
+                    sortedNameSizes.append(buferNameSizes[dimension])                    
+                }
                 self.searchState = true
             }
             
+        }
+        
+        if sortedHolesOrShaftsDimensions.count>1 {
+            sortedHolesOrShaftsDimensions.removeLast()
         }
         
     }

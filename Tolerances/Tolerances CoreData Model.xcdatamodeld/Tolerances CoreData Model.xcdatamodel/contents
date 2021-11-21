@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20E241" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19206" systemVersion="20E241" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="MemoryFitTolerance" representedClassName="MemoryFitTolerance" syncable="YES" codeGenerationType="class">
+        <attribute name="fitHoleField" optional="YES" attributeType="String"/>
+        <attribute name="fitHoleState" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="fitShaftField" optional="YES" attributeType="String"/>
+        <attribute name="fitShaftState" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
     <entity name="MemoryTolerance" representedClassName="MemoryTolerance" syncable="YES" codeGenerationType="class">
         <attribute name="holeField" optional="YES" attributeType="String"/>
         <attribute name="holeState" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
@@ -8,6 +14,7 @@
         <attribute name="tolerance" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="MemoryTolerance" positionX="-63" positionY="-18" width="128" height="118"/>
+        <element name="MemoryTolerance" positionX="144.80859375" positionY="-29.8125" width="128" height="118"/>
+        <element name="MemoryFitTolerance" positionX="-51.875" positionY="-21.55078125" width="128" height="103"/>
     </elements>
 </model>

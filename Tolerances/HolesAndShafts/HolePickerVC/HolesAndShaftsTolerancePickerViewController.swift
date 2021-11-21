@@ -8,12 +8,25 @@
 import UIKit
 import CoreData
 
+protocol SendToleranceNameInTextField {
+    func sendChosenTolerance(_ text: String, in field: Fields)
+}
+
 class HolesAndShaftsTolerancePickerViewController: UIViewController {
+    
+    enum FitState {
+        case fit
+        case dontFit
+    }
     
     private var state: Fields?
     
+    var toleranceDelegate: SendToleranceNameInTextField?
+    lazy var fittingState: FitState = .dontFit
+    
     private var stateHoleField: Fields?
     private var stateDimension: Int?
+    private var chosenTolerance: String?
     
     weak var holeAndShaftModel: DataHolesAndShafts!
     
@@ -73,7 +86,20 @@ class HolesAndShaftsTolerancePickerViewController: UIViewController {
     }
     
     @IBAction func selectHolePickerViewAction(_ sender: Any) {
-        self.saveHoleOrShaftInData()
+        
+        if fittingState == .dontFit {
+            self.saveHoleOrShaftInData()
+        }
+        
+        if fittingState == .fit {
+            
+            let senderString = holeAndShaftModel.getDefaultNameForHeader()
+            self.saveHoleOrShaftInData()
+            
+            self.toleranceDelegate?.sendChosenTolerance(senderString, in: state!)
+            
+        }
+        
         dismiss(animated: true, completion: nil)
     }
     
@@ -82,27 +108,58 @@ class HolesAndShaftsTolerancePickerViewController: UIViewController {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         
-        let request = NSFetchRequest<MemoryTolerance>(entityName: "MemoryTolerance")
-        
-        do {
-            let resultArray = try context.fetch(request)
+        //TODO: - реализовать DRY
+        if fittingState == .dontFit {
             
-            if state is HoleFields {
+            let request = NSFetchRequest<MemoryTolerance>(entityName: "MemoryTolerance")
+            
+            do {
+                let resultArray = try context.fetch(request)
                 
-                resultArray.first?.holeField = (holeAndShaftModel.getChoseState as! HoleFields).rawValue
-                resultArray.first?.holeState = Int16(holeAndShaftModel.getDimensionState)
+                if state is HoleFields {
+                    
+                    resultArray.first?.holeField = (holeAndShaftModel.getChoseState as! HoleFields).rawValue
+                    resultArray.first?.holeState = Int16(holeAndShaftModel.getDimensionState)
+                    
+                }
                 
+                if state is ShaftFields {
+                    resultArray.first?.shaftField = (holeAndShaftModel.getChoseState as! ShaftFields).rawValue
+                    resultArray.first?.shaftState = Int16(holeAndShaftModel.getDimensionState)
+                }
+                
+                try context.save()
+            } catch {
+                print("Error")
             }
             
-            if state is ShaftFields {
-                resultArray.first?.shaftField = (holeAndShaftModel.getChoseState as! ShaftFields).rawValue
-                resultArray.first?.shaftState = Int16(holeAndShaftModel.getDimensionState)
-            }
-            
-            try context.save()
-        } catch {
-            print("Error")
         }
+        
+        if fittingState == .fit {
+            
+            let request = NSFetchRequest<MemoryFitTolerance>(entityName: "MemoryFitTolerance")
+            
+            do {
+                let resultArray = try context.fetch(request)
+                
+                if state is HoleFields {
+                    
+                    resultArray.first?.fitHoleField = (holeAndShaftModel.getChoseState as! HoleFields).rawValue
+                    resultArray.first?.fitHoleState = Int16(holeAndShaftModel.getDimensionState)
+                    
+                }
+                
+                if state is ShaftFields {
+                    resultArray.first?.fitShaftField = (holeAndShaftModel.getChoseState as! ShaftFields).rawValue
+                    resultArray.first?.fitShaftState = Int16(holeAndShaftModel.getDimensionState)
+                }
+                
+                try context.save()
+            } catch {
+                print("Error")
+            }
+        }
+        
         
     }
     
